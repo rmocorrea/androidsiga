@@ -46,12 +46,9 @@ public class MainActivity extends Activity {
             @Override
             public void onAnimationEnd(Animation animation) {
                 image.setVisibility(View.VISIBLE);
-
             }
-
             @Override
             public void onAnimationRepeat(Animation animation) {
-
             }
         });
 
@@ -64,32 +61,31 @@ public class MainActivity extends Activity {
             @Override
             public void onAnimationEnd(Animation animation) {
                 image.setVisibility(View.INVISIBLE);
-
+                text.setText("Toque para Continuar:");
             }
-
             @Override
             public void onAnimationRepeat(Animation animation) {
-
             }
         });
     }
-    public void clicoutela(View view){
-        if(Math.random()<0.5){
+    public void clicoutela(View view) {
+        if (Math.random() < 0.5) {
             text.setText("Siga para Esquerda");
             image.setScaleX(1f);
-        }else{
+        } else {
             text.setText("Siga para Direita");
             image.setScaleX(-1f);
 
-            image.startAnimation(aparece);
-
-            new Timer().schedule(new TimerTask() {
-                @Override
-                public void run() {
-
-                }
-            },2000);
-
         }
+
+        image.startAnimation(aparece);
+
+        new Timer().schedule(new TimerTask() {
+            @Override
+            public void run() {
+                image.startAnimation(some);
+
+            }
+        }, 2000);
     }
 }
